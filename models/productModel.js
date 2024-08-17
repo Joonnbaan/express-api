@@ -1,25 +1,77 @@
 const mongoose = require('mongoose')
 
 const productSchema = mongoose.Schema(
+
     {
-        name: {
+        "productId": {
+            type: String,
+            required: true
+        },
+        "productName": {
             type: String,
             required: [true, "Please enter a product name"]
         },
-        quantity: {
+        "productPrice": {
             type: Number,
             require: true,
             default: 0
         },
-        price: {
-            type: Number,
+        "option": [
+            { type: String }
+        ],
+        "isAddition": {
+            type: Boolean,
             require: true
         },
-        image: {
+        "isSellable": {
+            type: Boolean,
+            require: true
+        },
+        "isBundle": {
+            type: Boolean,
+            require: true
+        },
+        "bundleDescription": {
+            "productSelect": [
+                {
+                    "catagory": {
+                        type: String
+                    },
+                    "subCatagory": {
+                        type: String
+                    },
+                    "selectQuantity": {
+                        type: Number
+                    }
+                }
+            ],
+            "productAddition": [
+                {
+                    "catagory": {
+                        type: String
+                    },
+                    "subCatagory": {
+                        type: String
+                    }
+                }
+            ]
+        },
+        "descriptionName": {
             type: String,
-            require: false
+            required: true
+        },
+        "catagory": {
+            type: String,
+            required: true
+        },
+        "subCatagory": {
+            type: String,
+            required: true
+        },
+        "image": {
+            type: String,
+            required: true
         }
-
     },
     {
         timestamps: true
